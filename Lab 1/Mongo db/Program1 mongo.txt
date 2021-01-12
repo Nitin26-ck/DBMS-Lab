@@ -1,0 +1,20 @@
+Consider an Employee with a social security number (SSN) working on multiple projects with definite hours for each. Each Employee belongs to a Department. Each project is associated with some domain areas such as Database, Cloud and so on.  Each Employee will be assigned to some project. Assume the attributes for Employee and Project relations.  
+
+//MONGO DB
+
+db.createCollection('Employee')
+
+db.Employee.insert({"SSN:'E1',"Name":'Sam',"Deptno":'D1',"Salary"					:'20000',"Pno":'P1',"PDomain":'Database'})
+db.Employee.insert({"SSN:'E2',"Name":'Ram',"Deptno":'D2',"Salary"					:'25000',"Pno":'P2',"PDomai	n":'Database'})
+db.Employee.insert({"SSN:'E3',"Name":'Sami',"Deptno":'D3',"Salary   				":'35000',"Pno":'P3',"PDomain":'Cloud'})
+db.Employee.insert({"SSN:'E4',"Name":'Ricky',"Deptno":'D1',"Salar				ry":'25000',"Pno":'P4',"PDomain":'Database'})
+db.Employee.insert({"SSN:'E5',"Name":'Sajel',"Deptno":'D2',"Salar					y":'30000',"Pno":'P2',"PDomain":'Cloud'})
+
+1. List all the employees of Department named #Dept_name. 
+
+db.Employee.find({"Deptno":'D1'}).pretty()
+
+
+2. Name the employees working on Project Number :#Project_No 
+
+db.Employee.find({"Pno":'P2'}).pretty()
