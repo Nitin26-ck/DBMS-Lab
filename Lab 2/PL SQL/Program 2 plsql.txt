@@ -1,0 +1,71 @@
+//Table Creation
+
+CREATE TABLE Supplier(
+SID	VARCHAR(3),
+Sname	 VARCHAR(10),
+PRIMARY KEY (SID)
+);
+
+CREATE TABLE Parts(
+PID	VARCHAR(3),
+Pname	 VARCHAR(10),
+Colour	 VARCHAR(6),
+PRIMARY KEY(PID)
+);
+
+CREATE TABLE Supply(
+SID	VARCHAR(3),
+PID	VARCHAR(3),
+Quantity  NUMBER(6),
+PRIMARY KEY(SID,PID),
+FOREIGN KEY (SID) REFERENCES  Supplier(SID) ON DELETE CASCADE,
+FOREIGN KEY (PID) REFERENCES Parts(PID) ON DELETE CASCADE
+);
+
+//inserting the values
+
+INSERT INTO Supplier VALUES('S1','MI');
+INSERT INTO Supplier VALUES('S2','Tata');
+INSERT INTO Supplier VALUES('S3','Tata');
+INSERT INTO Supplier VALUES('S4','Oppo');
+INSERT INTO Supplier VALUES('S5','MI');
+
+INSERT INTO Parts VALUES('P1','Wire','Grey');
+INSERT INTO Parts VALUES('P2','Nut','Black');
+INSERT INTO Parts VALUES('P3','Bolt','Red');
+INSERT INTO Parts VALUES('P4','Nut','Red');
+INSERT INTO Parts VALUES('P5','Wire','Black');
+
+INSERT INTO Supply VALUES('S1','P1',6);
+INSERT INTO Supply VALUES('S2','P3',4);
+INSERT INTO Supply VALUES('S3','P1',8);
+INSERT INTO Supply VALUES('S2','P2',5);
+INSERT INTO Supply VALUES('S1','P3',6);
+
+
+//PL-SQL QUERRIES
+
+BEGIN
+	dbms_output.put_line('Table Supplier');
+	dbms_output.put_line('SID Sname');
+	FOR i IN(SELECT * FROM Supplier) LOOP
+		dbms_output.put_line(i.SID||" "||i.Sname);
+	END LOOP;
+
+	dbms_output.put_line('Table 'Parts');
+	dbms_output.put_line('PID Pname Colour');
+	FOR i IN(SELECT * FROM Parts) LOOP
+		dbms_output.put_line(i.PID||" "||i.Pname||" "||i.Colour);
+	END LOOP;
+
+	dbms_output.put_line('TABLE SUPPLY');
+	dbms_output.put_line('SID PID Quantity);
+	FOR i in(SELECT * FROM Supply ) LOOP
+		dbms_output.put_line(i.SID||" " ||i.PID|| " " || i.Quantity);
+	END LOOP;
+	UPDATE Supply
+	SET Quantity=Quantity+(0.5*Quantity);
+
+
+END;
+/
