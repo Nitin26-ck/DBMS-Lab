@@ -1,0 +1,12 @@
+//MONGO DB
+
+db.createCollection('Warehouse')
+db.Warehouse.insert({"SID":'S1',"Sname":'MI',"PID":'P1',"Pname":'Wire',"Colour":'Black'})
+db.Warehouse.insert({"SID":'S2',"Sname":'Oppo',"PID":'P2',"Pname":'Nut',"Colour":'Black'})
+db.Warehouse.insert({"SID":'S2',"Sname":'Tata',"PID":'P3',"Pname":'Wire',"Colour":'Red'})
+db.Warehouse.insert({"SID":'S4',"Sname":'MI',"PID":'P4',"Pname":'Bolt',"Colour":'Grey'})
+db.Warehouse.insert({"SID":'S5',"Sname":'Tata',"PID":'P5',"Pname":'Nut',"Colour":'Red'})
+
+db.Warehouse.update({"PID":'P1'},{$ set :{"PID":'P6'}},{multi:true})
+
+db.Warehouse.find({"PID":'P4'}).pretty()
