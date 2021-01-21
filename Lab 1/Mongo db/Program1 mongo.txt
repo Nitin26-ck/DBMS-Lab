@@ -4,17 +4,17 @@ Consider an Employee with a social security number (SSN) working on multiple pro
 
 db.createCollection('Employee')
 
-db.Employee.insert({"SSN:'E1',"Name":'Sam',"Deptno":'D1',"Salary"					:'20000',"Pno":'P1',"PDomain":'Database'})
-db.Employee.insert({"SSN:'E2',"Name":'Ram',"Deptno":'D2',"Salary"					:'25000',"Pno":'P2',"PDomai	n":'Database'})
-db.Employee.insert({"SSN:'E3',"Name":'Sami',"Deptno":'D3',"Salary   				":'35000',"Pno":'P3',"PDomain":'Cloud'})
-db.Employee.insert({"SSN:'E4',"Name":'Ricky',"Deptno":'D1',"Salar				ry":'25000',"Pno":'P4',"PDomain":'Database'})
-db.Employee.insert({"SSN:'E5',"Name":'Sajel',"Deptno":'D2',"Salar					y":'30000',"Pno":'P2',"PDomain":'Cloud'})
+db.Employee.insert({"SSN:'E1',"Name":'Sam',"Deptno":'D1',"Salary":'20000',"Pno":'P1',"PDomain":'Database'})
+db.Employee.insert({"SSN:'E2',"Name":'Ram',"Deptno":'D2',"Salary":'25000',"Pno":'P2',"PDomai	n":'Database'})
+db.Employee.insert({"SSN:'E3',"Name":'Sami',"Deptno":'D3',"Salary":'35000',"Pno":'P3',"PDomain":'Cloud'})
+db.Employee.insert({"SSN:'E4',"Name":'Ricky',"Deptno":'D1',"Salarry":'25000',"Pno":'P4',"PDomain":'Database'})
+db.Employee.insert({"SSN:'E5',"Name":'Sajel',"Deptno":'D2',"Salary":'30000',"Pno":'P2',"PDomain":'Cloud'})
 
 1. List all the employees of Department named #Dept_name. 
 
-db.Employee.find({"Deptno":'D1'}).pretty()
+  db.Employee.find({"Deptno":'D1'}).pretty()
 
 
 2. Name the employees working on Project Number :#Project_No 
 
-db.Employee.find({"Pno":'P2'}).pretty()
+  db.Employee.find({"Pno":'P2'}).pretty()
