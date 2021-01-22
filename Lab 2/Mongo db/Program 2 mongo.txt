@@ -1,12 +1,19 @@
+Consider the relations: PART, SUPPLIER and SUPPLY. The Supplier relation holds information about suppliers. The SID attribute identifies the supplier, while the other attributes each hold one piece of information about the supplier. The Part relation holds information about parts. Likewise, the PID attribute identifies the part, while the other attributes hold information about the part. The Shipment relation holds information about shipments. The SID and PID attributes identify the supplier of the shipment and the part shipped, respectively. The remaining attribute indicates how many parts where shipped. 
+
+Create the table, insert suitable tuples and perform the following operations using  MongoDB 
+
 //MONGO DB
 
-db.createCollection('Warehouse')
-db.Warehouse.insert({"SID":'S1',"Sname":'MI',"PID":'P1',"Pname":'Wire',"Colour":'Black'})
-db.Warehouse.insert({"SID":'S2',"Sname":'Oppo',"PID":'P2',"Pname":'Nut',"Colour":'Black'})
-db.Warehouse.insert({"SID":'S2',"Sname":'Tata',"PID":'P3',"Pname":'Wire',"Colour":'Red'})
-db.Warehouse.insert({"SID":'S4',"Sname":'MI',"PID":'P4',"Pname":'Bolt',"Colour":'Grey'})
-db.Warehouse.insert({"SID":'S5',"Sname":'Tata',"PID":'P5',"Pname":'Nut',"Colour":'Red'})
+  db.createCollection('Warehouse')
 
-db.Warehouse.update({"PID":'P1'},{$ set :{"PID":'P6'}},{multi:true})
-
-db.Warehouse.find({"PID":'P4'}).pretty()
+  db.Warehouse.insert({"SID":'S1',"Sname":'MI',"PID":'P1',"Pname":'Wire',"Colour":'Black'})
+  db.Warehouse.insert({"SID":'S2',"Sname":'Oppo',"PID":'P2',"Pname":'Nut',"Colour":'Black'})
+  db.Warehouse.insert({"SID":'S2',"Sname":'Tata',"PID":'P3',"Pname":'Wire',"Colour":'Red'})
+  db.Warehouse.insert({"SID":'S4',"Sname":'MI',"PID":'P4',"Pname":'Bolt',"Colour":'Grey'})
+  db.Warehouse.insert({"SID":'S5',"Sname":'Tata',"PID":'P5',"Pname":'Nut',"Colour":'Red'})
+  
+1. Update the parts identifier
+  db.Warehouse.update({"PID":'P1'},{$ set :{"PID":'P6'}},{multi:true})
+  
+2. Display all suppliers who supply the part with part identifier: #Part_No.
+  db.Warehouse.find({"PID":'P4'}).pretty()
