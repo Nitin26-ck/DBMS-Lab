@@ -1,4 +1,6 @@
-//Consider an Employee with a social security number (SSN) working on multiple projects with definite hours for each. Each Employee belongs to a Department. Each project is associated with some domain areas such as Database, Cloud and so on.  Each Employee will be assigned to some project. Assume the attributes for Employee and Project relations.  
+//Consider an Employee with a social security number (SSN) working on multiple projects with definite hours for each.
+Each Employee belongs to a Department. Each project is associated with some domain areas such as Database, Cloud and so on.  
+Each Employee will be assigned to some project. Assume the attributes for Employee and Project relations.  
 
 // Table Creation
 
@@ -9,11 +11,13 @@ Salary	NUMBER(10),
 Deptno  VARCHAR(5),
 PRIMARY KEY (SSN)
 );
+
 CREATE TABLE Project(
 Pno	VARCHAR(5),
 Pdomain  VARCHAR(10),
 PRIMARY KEY (Pno)
 );
+
 CREATE TABLE Workson(
 SSN	VARCHAR(5),
 Pno	VARCHAR(5),
@@ -44,13 +48,14 @@ IINSERT INTO Workson VALUES('E1','P4',2);
 INSERT INTO Workson VALUES('E2','P5',10);
 
 
- //Write a program that gives all employees in Department #number a 15% pay increase. Display a message displaying how many employees were awarded the increase.  
+ //Write a program that gives all employees in Department #number a 15% pay increase. 
+ Display a message displaying how many employees were awarded the increase.  
 //PL-SQL 
 
 BEGIN
 	UPDATE Employee
 	SET Salary=Salary+(0.15*Salary)
 	WHERE Deptno='D2';
-	dbms_output.put_line('no of employees whose salary got 						incremented is :' ||sql%rowcount);
+	dbms_output.put_line('no of employees whose salary got incremented is :' ||sql%rowcount);
 END;
 /
