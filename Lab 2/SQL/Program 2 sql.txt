@@ -1,3 +1,12 @@
+Consider the relations: PART, SUPPLIER and SUPPLY. The Supplier relation holds information about suppliers.
+The SID attribute identifies the supplier, while the other attributes each hold one piece of information about the supplier.
+The Part relation holds information about parts. Likewise, the PID attribute identifies the part, while the other attributes hold information about the part. 
+The Shipment relation holds information about shipments.
+The SID and PID attributes identify the supplier of the shipment and the part shipped, respectively.
+The remaining attribute indicates how many parts where shipped.
+
+Create the above tables, insert suitable tuples and perform the following operations in Oracle SQL:
+
 //Table Creation
 
 CREATE TABLE Supplier(
@@ -22,7 +31,7 @@ FOREIGN KEY (SID) REFERENCES  Supplier(SID) ON DELETE CASCADE,
 FOREIGN KEY (PID) REFERENCES Parts(PID) ON DELETE CASCADE
 );
 
-//inserting the values
+//Inserting the values
 
 INSERT INTO Supplier VALUES('S1','MI');
 INSERT INTO Supplier VALUES('S2','Tata');
@@ -44,17 +53,23 @@ INSERT INTO Supply VALUES('S1','P3',6);
 
 //SQL QUERRIES
 
-SELECT PID
-FROM Supply,Supplier
-WHERE  Supply.SID=Supplier.SID
-	AND Supplier.Sname='MI';
+1. Obtain the part identifiers of parts supplied by supplier #supplier_name.
 
-SELECT Sname
-FROM Supply,Supplier,Parts
-WHERE Supplier.SID=Supply.SID
-	AND Supply.PID=Parts.PID
-	AND Parts.Pname='Wire';
+	SELECT PID
+	FROM Supply,Supplier
+	WHERE  Supply.SID=Supplier.SID
+		AND Supplier.Sname='MI';
 
-DELETE  FROM Parts
-WHERE Colour='Red';
+2. Obtain the Names of suppliers who supply #part_name.
+
+	SELECT Sname
+	FROM Supply,Supplier,Parts
+	WHERE Supplier.SID=Supply.SID
+		AND Supply.PID=Parts.PID
+		AND Parts.Pname='Wire';
+
+3. Delete the parts which are in #colour. 
+	
+	DELETE  FROM Parts
+	WHERE Colour='Red';
 
