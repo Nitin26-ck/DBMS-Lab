@@ -1,3 +1,9 @@
+Consider the relations BOAT, SAILOR and RESERVES. The relation BOAT identifies the features of a boat such as unique identifier, color and a name.
+The list of sailors with attributes such as SailorID, name, age etc., are stored in the relation Sailor.
+The sailors are allowed to reserve any number of boats on any day of the week.
+
+Create the tables, insert suitable tuples and perform the following operations in SQL:
+
 //CREATING TABLES
 
 CREATE TABLE Boat(
@@ -45,22 +51,25 @@ INSERT INTO Reserves VALUES('B2','S2','Friday');
 
 //SQL QUERRIES
 
-SELECT BID
-FROM Reserves
-WHERE SID IN (SELECT SID
-	           FROM Sailor
-	           WHERE Sname='Sami');
-
-SELECT BID
-FROM Boat B
-WHERE NOT EXISTS ( SELECT S.SID 
+1. Obtain the bid of the boats reserved by ‘#Sailor_Name’. 
+	SELECT BID
+	FROM Reserves
+	WHERE SID IN (SELECT SID
+	              FROM Sailor
+	              WHERE Sname='Sami');
+		      
+2. Retrieve the bid of the boats reserved by all the sailors.
+	SELECT BID
+	FROM Boat B
+	WHERE NOT EXISTS ( SELECT S.SID 
 	 	          FROM Sailor S
-		           WHERE NOT EXISTS ( SELECT R.SID
-					       FROM Reserves R
-					       WHERE R.BID= B.BID
-					       	       AND R.SID= S.SID));
-
-SELECT COUNT(BID),SID
-FROM Reserves 
-GROUP BY SID;
+		          WHERE NOT EXISTS ( SELECT R.SID
+					     FROM Reserves R
+					      WHERE R.BID= B.BID
+					       	    AND R.SID= S.SID));
+						    
+3. Find the number of boats reserved by each sailor 
+	SELECT COUNT(BID),SID
+	FROM Reserves 
+	GROUP BY SID;
 
