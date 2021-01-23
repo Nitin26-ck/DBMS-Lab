@@ -1,0 +1,13 @@
+//MONGO-DB
+
+db.createCollection('Port')
+db.Port.insert({"BID":'B1',"SID":'S1',"Bname":'Fisher',"Sname":'Ricky',"Colour":'Red'})
+db.Port.insert({"BID":'B2',"SID":'S2',"Bname":'Whale',"Sname":'Ram',"Colour":'Green'})
+db.Port.insert({"BID":'B3',"SID":'S3',"Bname":'Fisher',"Sname":'Sami',"Colour":'Yellow'})
+db.Port.insert({"BID":'B4',"SID":'S4',"Bname":'Indian',"Sname":'Ricky',"Colour":'Blue'})
+db.Port.insert({"BID":'B5',"SID":'S5',"Bname":'Seal',"Sname":'Sam',"Colour":'Red'})
+
+db.Port.find({"Sname":'Ricky'}).count()
+
+db.Port.find({"Colour":'Red'}).pretty()
+
