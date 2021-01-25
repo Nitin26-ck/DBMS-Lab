@@ -1,0 +1,68 @@
+//CREATING TABLES
+
+CREATE TABLE Boat(
+BID	VARCHAR(3),
+Bname	VARCHAR(10),
+Colour VARCHAR(6),
+PRIMARY KEY (BID)
+);
+
+CREATE TABLE Sailor(
+SID	VARCHAR(3),
+Sname	VARCHAR(10),
+Age	NUMBER(2),
+PRIMARY KEY (SID)
+);
+
+CREATE TABLE Reserves(
+BID	VARCHAR(3),
+SID	VARCHAR(3),
+Day	VARCHAR(8),
+PRIMARY KEY (BID,SID),
+FOREIGN KEY (BID) REFERENCES Boat(BID),
+FOREIGN KEY(SID) REFERNCES Sailor(SID)
+);
+
+//INSERTING THE VALUES
+
+INSERT INTO Boat VALUES('B1','Fisher','Red');
+INSERT INTO Boat VALUES('B2','Whale','Yellow');
+INSERT INTO Boat VALUES('B3','Indian','Green');
+INSERT INTO Boat VALUES('B4','Seal','Red');
+INSERT INTO Boat VALUES('B5','Fisher','Blue');
+
+INSERT INTO Sailor VALUES('S1','Sam',40);
+INSERT INTO Sailor VALUES('S2','Ricky',30);
+INSERT INTO Sailor VALUES('S3','Sami',45);
+INSERT INTO Sailor VALUES('S4','Ram',40);
+INSERT INTO Sailor VALUES('S5','Sejal',25);
+
+INSERT INTO Reserves VALUES('B1','S1','Friday');
+INSERT INTO Reserves VALUES('B3','S4','Tuesday');
+INSERT INTO Reserves VALUES('B2','S3','Saturday');
+INSERT INTO Reserves VALUES('B5','S1','Sunday');
+INSERT INTO Reserves VALUES('B2','S2','Friday');
+
+
+//PL SQL
+
+DECLARE
+	flag number:=0;
+	n number;
+	i number;
+BEGIN
+	n:=&ns;
+	FOR i IN 2..n/2 LOOP
+		IF mod(n,i) =0 THEN
+			flag:=1;
+			EXIT;
+		END IF;
+	END LOOP;
+	IF flag=1 THEN
+		dbms_output.put_line(' not a prime number');
+	ELSE
+		dbms_output.put_line('Prime');
+	END IF;
+END;
+/
+	
