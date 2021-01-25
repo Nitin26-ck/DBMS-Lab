@@ -1,3 +1,9 @@
+Consider the Shipment – Warehouse case study. Different parts like nut, bolts etc., are being shipped to different warehouses.
+The quantity and date of shipment are recorded for each part stored within the warehouse. 
+The address of the warehouse also stored for shipment purposes. 
+
+Create the above tables, insert suitable tuples and perform the following operations in SQL:
+
 //TABLE CREATION
 
 CREATE TABLE Parts(
@@ -44,32 +50,42 @@ INSERT INTO Shipment VALUES('P3','W2',20,'17-APR-2015');
 INSERT INTO Shipment VALUES('P1','W2',6,'3-FEB-2020');
 INSERT INTO Shipment VALUES('P2','W3',25,'12-JUN-2017');
 
+
+
 //SQL QUERRIES
 
-SELECT Wname
-FROM Warehouse
-WHERE Wno IN ( SELECT Wno
-		   FROM Shipment
-		   WHERE Pno = ( SELECT Pno
-				  FROM Parts
-				  WHERE Colour='Red'));
+1. Obtain the Names of warehouses which have shipped red colored parts.
 
-SELECT Pno
-FROM Parts P
-WHERE NOT EXISTS ( SELECT W.Wno 
+	SELECT Wname
+	FROM Warehouse
+	WHERE Wno IN ( SELECT Wno
+		       FROM Shipment
+		       WHERE Pno = ( SELECT Pno
+				     FROM Parts
+				     WHERE Colour='Red'));
+
+2. Retrieve the PNO of the parts shipped by all the warehouses.
+
+	SELECT Pno
+	FROM Parts P
+	WHERE NOT EXISTS ( SELECT W.Wno 
 		          FROM Warehouse W
 		          WHERE NOT EXISTS ( SELECT  S.Wno
-					      FROM Shipment S
-					      WHERE S.Pno= P.Pno
-						      AND S.Wno= W.Wno));
+					     FROM Shipment S
+					     WHERE S.Pno= P.Pno
+						   AND S.Wno= W.Wno));
 
-SELECT COUNT(Pno),Wno
-FROM Shipment
-GROUP BY (Wno);
+3. Find the number of parts supplied by each warehouse.
 
-SELECT W.Wno, W.Wname, W.Address
-FROM Warehouse W JOINS Shipment S
-ON W.Wno=S.Wno
-WHERE Quantity IN ( SELECT MAX(Quantity)
+	SELECT COUNT(Pno),Wno
+	FROM Shipment
+	GROUP BY (Wno);
+
+4. List the warehouse details which ships maximum quantity of parts.
+
+	SELECT W.Wno, W.Wname, W.Address
+	FROM Warehouse W JOINS Shipment S
+	ON W.Wno=S.Wno
+	WHERE Quantity IN (SELECT MAX(Quantity)
 		           FROM Shipment);
 
