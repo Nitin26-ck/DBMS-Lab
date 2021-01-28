@@ -1,3 +1,7 @@
+Consider the Shipment – Warehouse case study. Different parts like nut, bolts etc., are being shipped to different warehouses.
+The quantity and date of shipment are recorded for each part stored within the warehouse.
+The address of the warehouse also stored for shipment purposes.
+
 //TABLE CREATION
 
 CREATE TABLE Parts(
@@ -44,6 +48,7 @@ INSERT INTO Shipment VALUES('P3','W2',20,'17-APR-2015');
 INSERT INTO Shipment VALUES('P1','W2',6,'3-FEB-2020');
 INSERT INTO Shipment VALUES('P2','W3',25,'12-JUN-2017');
 
+Using cursors demonstrate the process of copying the contents of one table to a new table.
 
 //PL-SQL
 
