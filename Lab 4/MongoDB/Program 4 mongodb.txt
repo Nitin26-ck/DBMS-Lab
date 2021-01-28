@@ -1,11 +1,19 @@
+Consider the Shipment – Warehouse case study. Different parts like nut, bolts etc., are being shipped to different warehouses.
+The quantity and date of shipment are recorded for each part stored within the warehouse. 
+The address of the warehouse also stored for shipment purposes.
+
+Create the table, insert suitable tuples and perform the following operations using  MongoDB 
+
 //MONGO DB
 
-db.createCollection('Shipment')
-db.Shipment.insert({"Pno":'P1',"Pname":'Wire',"Colour":'Red', 					"Wno":'W1',"Wname":'Tata',"Quantity":10})
-db.Shipment.insert({"Pno":'P2',"Pname":'Wire',"Colour":'Black', 					"Wno":'W2',"Wname":'Tata',"Quantity":20})
-db.Shipment.insert({"Pno":'P3',"Pname":'Nut',"Colour":'Red', 				"Wno":'W3',"Wname":'MI',"Quantity":15})
-db.Shipment.insert({"Pno":'P4',"Pname":'Nut',"Colour":'Black', 				"Wno":'W1',"Wname":'MI',"Quantity":10})
-db.Shipment.insert({"Pno":'P4',"Pname":'Wire',"Colour":'Grey', 				"Wno":'W2',"Wname":'Tata',"Quantity":20})
+  db.createCollection('Shipment')
+  
+  db.Shipment.insert({"Pno":'P1',"Pname":'Wire',"Colour":'Red',"Wno":'W1',"Wname":'Tata',"Quantity":10})
+  db.Shipment.insert({"Pno":'P2',"Pname":'Wire',"Colour":'Black',"Wno":'W2',"Wname":'Tata',"Quantity":20})
+  db.Shipment.insert({"Pno":'P3',"Pname":'Nut',"Colour":'Red',"Wno":'W3',"Wname":'MI',"Quantity":15})
+  db.Shipment.insert({"Pno":'P4',"Pname":'Nut',"Colour":'Black',"Wno":'W1',"Wname":'MI',"Quantity":10})
+  db.Shipment.insert({"Pno":'P4',"Pname":'Wire',"Colour":'Grey',"Wno":'W2',"Wname":'Tata',"Quantity":20})
 
-db.Shipment.find({"Wname":'Tata'}).pretty()
-db.Shipment.aggregate( [{ $ group: {_id:"$Wname",Total:{$Sum: "$Quantity"}}}])
+  db.Shipment.find({"Wname":'Tata'}).pretty()
+
+  db.Shipment.aggregate( [{ $ group: {_id:"$Wname",Total:{$Sum: "$Quantity"}}}])
