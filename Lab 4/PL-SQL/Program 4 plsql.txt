@@ -1,0 +1,66 @@
+//TABLE CREATION
+
+CREATE TABLE Parts(
+Pno	VARCHAR(3),
+Pname	 VARCHAR(10),
+Colour	 VARCHAR(6),
+PRIMARY KEY (Pno)
+);
+
+CREATE TABLE Warehouse(
+Wno 	VARCHAR(3),
+Wname VARCHAR(10),
+Address VARCHAR(20),
+PRIMARY KEY (Wno)
+);
+
+CREATE TABLE Shipments(
+Pno 	VARCHAR(3),
+Wno	VARCHAR(3),
+Quantity NUMBER(3),
+Date	DATE,
+PRIMARY KEY (Pno,Wno),
+FOREIGN KEY (Pno) REFERENCES Parts(Pno),
+FOREIGN KEY (Wno) REFERENCES Warehouse(Wno)
+);
+
+//INSERTING THE VALUES
+
+INSERT INTO Parts VALUES('P1','Nut','Red');
+INSERT INTO Parts VALUES('P2','Nut','Black');
+INSERT INTO Parts VALUES('P3','Wire','Red');
+INSERT INTO Parts VALUES('P4','Bolt','Black');
+INSERT INTO Parts VALUES('P5','Wire','Grey');
+
+INSERT INTO Warehouse VALUES('W1','Tata','07Kolkata');
+INSERT INTO Warehouse VALUES('W2','MI','03Mumbai');
+INSERT INTO Warehouse VALUES('W3','Tata','08Chennai');
+INSERT INTO Warehouse VALUES('W4','Oppo','02Kolkata');
+INSERT INTO Warehouse VALUES('W5','MI','07Chennai');
+
+INSERT INTO Shipment VALUES('P1','W1',5,'7-DEC-2018');
+INSERT INTO Shipment VALUES('P2','W2',15,'23-SEP-2014');
+INSERT INTO Shipment VALUES('P3','W2',20,'17-APR-2015');
+INSERT INTO Shipment VALUES('P1','W2',6,'3-FEB-2020');
+INSERT INTO Shipment VALUES('P2','W3',25,'12-JUN-2017');
+
+
+//PL-SQL
+
+DECLARE
+	CURSOR C1 IS
+	SELECT *
+	FROM Parts;
+	V_Part  Parts%rowtype;
+BEGIN
+	OPEN C1
+	LOOP
+		FETCH C1 INTO V_Part.Pno, V_Part.Pname, V_Part.Colour;
+		EXIT WHEN C1%NOT FOUND;
+		INSERT INTO Part1 VALUES(V_Part.Pno, V_Part.Pname,V_Part.Colour);
+	END LOOP;
+	CLOSE C1;
+
+END;
+/
+
