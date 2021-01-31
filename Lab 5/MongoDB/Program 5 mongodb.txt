@@ -1,13 +1,16 @@
-
+Consider the Book Lending system from the library. 
+The students are allowed borrow any number of books on a given date from the library.
+The details of the book should include ISBN, Title of the Book, author and publisher. 
+All students need not compulsorily borrow books.
 
 //MONGO-DB 
 
 db.createCollection('Book')
-db.Book.insert({"USN":'S1',"Sname":'Ram',"ISBN":'B123',"Title":'Database',"Author":'Navathe',"			Publisher:'Oracle'})
-db.Book.insert({"USN":'S2',"Sname":'Sam',"ISBN":'B125',"Title":'Database',"Author":'Murrach',"			Publisher:'Oracle'})
-db.Book.insert({"USN":'S2',"Sname":'Ricky',"ISBN":'B128',"Title":'HTML',"Author":'Martin',"			Publisher:'Wrox'})
-db.Book.insert({"USN":'S3',"Sname":'Ram',"ISBN":'B121',"Title":'Java',"Author":'Patrick',"			Publisher:'Tata'})
-db.Book.insert({"USN":'S5',"Sname":'Sami',"ISBN":'B123',"Title":'Networks',"Author":'Furozan',"			Publisher:'Tata})
+db.Book.insert({"USN":'S1',"Sname":'Ram',"ISBN":'B123',"Title":'Database',"Author":'Navathe',"Publisher":'Oracle'})
+db.Book.insert({"USN":'S2',"Sname":'Sam',"ISBN":'B125',"Title":'Database',"Author":'Murrach',"Publisher":'Oracle'})
+db.Book.insert({"USN":'S2',"Sname":'Ricky',"ISBN":'B128',"Title":'HTML',"Author":'Martin',"Publisher":'Wrox'})
+db.Book.insert({"USN":'S3',"Sname":'Ram',"ISBN":'B121',"Title":'Java',"Author":'Patrick',"Publisher":'Tata'})
+db.Book.insert({"USN":'S5',"Sname":'Sami',"ISBN":'B123',"Title":'Networks',"Author":'Furozan',"Publisher":'Tata})
 
 db.Book.find({"ISBN":'B123'},{"Sname":'i', '_id':0}).pretty()
 db.Book.find({"Title":'Database'},{"Sname":'i','_id':0}).pretty()
