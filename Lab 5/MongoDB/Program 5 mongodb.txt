@@ -3,6 +3,8 @@ The students are allowed borrow any number of books on a given date from the lib
 The details of the book should include ISBN, Title of the Book, author and publisher. 
 All students need not compulsorily borrow books.
 
+Create the table, insert suitable tuples and perform the following operations using  MongoDB
+
 //MONGO-DB 
 
 db.createCollection('Book')
