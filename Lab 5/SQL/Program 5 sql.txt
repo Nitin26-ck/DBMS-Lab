@@ -52,21 +52,27 @@ INSERT INTO Borrow VALUES ('S2','B125','15-JUL-2017');
 
 //SQL QUERRIES
 
-SELECT Sname
-FROM Student
-WHERE USN = ( SELECT USN
-		FROM Borrow
-		WHERE ISBN='B123');
+1. Obtain the name of the student who has borrowed the book bearing ISBN ‘123
 
-SELECT Sname
-FROM Student
-WHERE USN= ( SELECT USN
-	              FROM Borrow
-		WHERE  ISBN= ( SELECT ISBN
-				FROM Book
-				WHERE Title='Database'));
+	SELECT Sname
+	FROM Student
+	WHERE USN = (SELECT USN
+		     FROM Borrow
+		     WHERE ISBN='B123');
 
-SELECT COUNT(ISBN),USN
-FROM Borrow
-GROUP BY (USN);
+2. Obtain the Names of students who have borrowed database books. 
+
+	SELECT Sname
+	FROM Student
+	WHERE USN= (SELECT USN
+	            FROM Borrow
+		    WHERE  ISBN= (SELECT ISBN
+				  FROM Book
+				  WHERE Title='Database'));
+				  
+3. Find the number of books borrowed by each student. 
+
+	SELECT COUNT(ISBN),USN
+	FROM Borrow
+	GROUP BY (USN);
 
