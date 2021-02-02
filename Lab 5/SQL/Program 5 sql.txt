@@ -3,7 +3,10 @@ The students are allowed borrow any number of books on a given date from the lib
 The details of the book should include ISBN, Title of the Book, author and publisher.
 All students need not compulsorily borrow books.
 
+Create the above tables, insert suitable tuples and perform the following operations in SQL
+
 //TABLE CREATION
+
 CREATE TABLE Student(
 USN	VARCHAR(10),
 Sname	VARCHAR(10).
