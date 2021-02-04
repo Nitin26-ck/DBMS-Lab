@@ -48,9 +48,10 @@ IINSERT INTO Workson VALUES('E1','P4',2);
 INSERT INTO Workson VALUES('E2','P5',10);
 
 
- //Write a program that gives all employees in Department #number a 15% pay increase. 
+ Write a program that gives all employees in Department #number a 15% pay increase. 
  Display a message displaying how many employees were awarded the increase.  
-//PL-SQL 
+ 
+
 
 BEGIN
 	UPDATE Employee
